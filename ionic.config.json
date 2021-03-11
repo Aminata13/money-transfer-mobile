@@ -1,0 +1,7 @@
+{
+  "name": "MoneyTransferMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
