@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-row>
+      <ion-col>
+        <ion-buttons>
+          <ion-icon [routerLink]="['/tabs/desktop']" name="home"></ion-icon>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <ion-img src="../../assets/img/logo.jpeg"></ion-img>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <div class="tabs-toolbar-header">
+      <ion-icon name="calculator"></ion-icon>
+      Calculateur de frais
+    </div>
+    <hr>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #feesForm="ngForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item class="item1">
+        <ion-label position="floating">Montant</ion-label>
+        <ion-input name="amount" type="number" spellcheck="false" autocapitalize="off"
+          required>
+        </ion-input>
+      </ion-item>
+    </ion-list>
+
+    <ion-button size="small" class="ion-float-right" [disabled]="!feesForm.form.valid" type="submit" expand="block">Calculer</ion-button>
+  </form>
+</ion-content>

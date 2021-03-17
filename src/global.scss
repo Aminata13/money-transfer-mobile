@@ -24,3 +24,41 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* App font-family */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+}
+.tabs-toolbar-header {
+  text-align: center;
+  color: #07aeef;
+  font: 15px Helvetica;
+  margin-top: 10%;
+}
+.alert .alert-wrapper .alert-head {
+  background-color: #EDEDED;
+  margin-bottom: 10%;
+  font: 20px 'Poppins';
+}
+.alert .alert-message {
+  font: 15px 'Poppins';
+}
+.alert .alert-message strong {
+  font-size: 17px;
+}
+.alert .alert-button-inner {
+  font: bold 14px 'Poppins';
+  color: white;
+  background-color: #FA4A0C;
+  border-radius: 30px;
+  width: 25%;
+  height: 80%;
+  margin: 0 auto;
+}
+

@@ -1,0 +1,35 @@
+ion-content {
+  --ion-background-color: #e5e5e5;
+}
+ion-img {
+  width: 20%;
+  height: 90%;
+  margin-left: -10%;
+}
+hr {
+  width: 30%;
+  border-top: 2.4px solid #07aeef;
+  margin-bottom: -1%;
+  border-radius: 40px;
+  font-family: Helvetica;
+  line-height: 21px;
+}
+ion-label {
+  color: gray !important;
+  font-size: 15px !important;
+}
+form {
+  padding: 10%;
+}
+ion-button {
+  margin: 10% auto;
+  font: 14px Helvetica;
+  --background: #FA4A0C;
+}
+.error {
+  font-size: 12px;
+}
+ion-icon {
+  color: #07aeef;
+}
+

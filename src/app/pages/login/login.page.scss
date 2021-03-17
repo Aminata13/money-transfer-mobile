@@ -1,0 +1,41 @@
+ion-content {
+  --ion-background-color: #e5e5e5;
+}
+ion-img {
+  width: 30%;
+  margin: 23% auto;
+}
+.login {
+  text-align: center;
+}
+hr {
+  width: 30%;
+  border-top: 2.4px solid #07aeef;
+  margin-bottom: -1%;
+  border-radius: 40px;
+  font-family: Helvetica;
+  line-height: 21px;
+}
+form {
+  padding: 10%;
+}
+ion-label {
+  color: gray !important;
+  font-size: 15px !important;
+}
+ion-button {
+  width: 90%;
+  margin: 15% auto;
+  --background: #51bfd0;
+}
+h5 {
+  color: #07aeef;
+    font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  margin: 7% 0 0 7%;
+}
+.error {
+  font-size: 12px;
+}
