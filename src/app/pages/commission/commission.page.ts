@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommissionPage implements OnInit {
   commissions: any[];
+  customAlertOptions: any = {
+    cssClass: 'alert',
+    header: 'Type'
+  };
 
   constructor() {
     this.commissions = [

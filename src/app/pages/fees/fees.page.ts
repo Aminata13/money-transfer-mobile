@@ -18,7 +18,7 @@ export class FeesPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      cssClass: 'alert',
+      cssClass: 'alert-fees',
       header: 'Calculateur',
       message: 'Pour une transaction de 300 000, les frais sont égals à:<br> <strong>12 000 XOF</strong>',
       buttons: ['Retour']

@@ -41,18 +41,22 @@
   font: 15px Helvetica;
   margin-top: 10%;
 }
-.alert .alert-wrapper .alert-head {
+.alert-fees .alert-wrapper .alert-head {
   background-color: #EDEDED;
   margin-bottom: 10%;
   font: 20px 'Poppins';
 }
-.alert .alert-message {
+.alert .alert-head, .alert .alert-message {
+  background-color: #EDEDED;
+  font: 20px 'Poppins';
+}
+.alert-fees .alert-message, .alert .alert-radio-group{
   font: 15px 'Poppins';
 }
-.alert .alert-message strong {
+.alert-fees .alert-message strong {
   font-size: 17px;
 }
-.alert .alert-button-inner {
+.alert-fees .alert-button-inner {
   font: bold 14px 'Poppins';
   color: white;
   background-color: #FA4A0C;
@@ -61,4 +65,7 @@
   height: 80%;
   margin: 0 auto;
 }
-
+.alert .alert-button-group .alert-button-role-cancel {
+  font: bold 17px 'Poppins';
+  color: gray;
+}

@@ -21,17 +21,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col><ion-item>
-        <ion-label>Default Label</ion-label>
-        <ion-input></ion-input>
-      </ion-item></ion-col>
-      <ion-col>Type</ion-col>
-      <ion-col>Montant<ion-icon name="caret-down"></ion-icon></ion-col>
+  <ion-grid class="filter-grid">
+    <ion-row class="filter-row">
+      <ion-col>
+        <ion-select okText="Ok" cancelText="Annuler" [interfaceOptions]="customAlertOptions" interface="alert" placeholder="Type">
+          <ion-select-option value="deposit">Dépôt</ion-select-option>
+          <ion-select-option value="withdrawal">Retrait</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-row class="input-row">
+          <ion-label>Du</ion-label>
+          <ion-input placeholder="07-06-2020"></ion-input>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-row class="input-row">
+          <ion-label>Au</ion-label>
+          <ion-input placeholder="07-06-2020"></ion-input>
+        </ion-row>
+      </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid>
+  <ion-grid class="table-grid">
     <ion-row>
       <ion-col>Date<ion-icon name="caret-down"></ion-icon></ion-col>
       <ion-col>Type</ion-col>
@@ -41,6 +53,16 @@
       <ion-col>{{ c.date }}</ion-col>
       <ion-col>{{ c.type }}</ion-col>
       <ion-col>{{ c.montant }}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row class="total-row">
+      <ion-text class="amount-text">
+        <ion-text class="total-text">
+          Total
+        </ion-text>
+          700 000
+      </ion-text>
     </ion-row>
   </ion-grid>
 </ion-content>

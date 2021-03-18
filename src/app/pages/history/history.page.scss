@@ -1,0 +1,76 @@
+ion-content {
+  --ion-background-color: #e5e5e5;
+}
+ion-img {
+  width: 20%;
+  height: 90%;
+  margin-left: -10%;
+}
+ion-icon {
+  color: #07aeef;
+}
+.filter-grid, .table-grid {
+  font: 11px 'Poppins';
+  margin-left: 15%;
+}
+ion-select {
+  font: 12px Helvetica;
+  background-color: white;
+  width: 83%;
+  height: 60%;
+  border-radius: 6px;
+}
+ion-select::part(placeholder), ion-input::part(placeholder) {
+  font: 12px 'Poppins';
+  opacity: 1;
+}
+ion-select::part(icon) {
+  color: #07aeef;
+  opacity: 1;
+}
+.input-row ion-label {
+  margin: 7% 4% 0% 4%;
+  font: bold 12px 'Poppins';
+  color: #07aeef;
+}
+.filter-row, .table-row {
+  margin-left: -10%;
+}
+.input-row ion-input {
+  margin-bottom: 20%;
+  background-color: white;
+  width: 90%;
+  border-radius: 6px;
+}
+.total-row {
+  float: right;
+  width: 60%;
+}
+.total-text {
+  font: bold 12px Helvetica;
+  border: 1px solid #FA4A0C;
+  border-radius: 30px;
+  padding: 0% 8% 0% 8%;
+  background-color: #FA4A0C;
+  color: white;
+  margin-right: 10%;
+}
+.amount-text {
+  width: 70%;
+  font: bold 11px Helvetica;
+  border: 1px solid #FA4A0C;
+  border-radius: 30px;
+}
+ion-segment {
+  width: 90%;
+}
+.transaction ion-label {
+  font: 11px 'Poppins';
+}
+.transaction ion-icon {
+  margin-top: 2%;
+}
+
+
+
+
