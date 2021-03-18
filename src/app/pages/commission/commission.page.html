@@ -21,5 +21,26 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col><ion-item>
+        <ion-label>Default Label</ion-label>
+        <ion-input></ion-input>
+      </ion-item></ion-col>
+      <ion-col>Type</ion-col>
+      <ion-col>Montant<ion-icon name="caret-down"></ion-icon></ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Date<ion-icon name="caret-down"></ion-icon></ion-col>
+      <ion-col>Type</ion-col>
+      <ion-col>Montant<ion-icon name="caret-down"></ion-icon></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let c of commissions; index as i">
+      <ion-col>{{ c.date }}</ion-col>
+      <ion-col>{{ c.type }}</ion-col>
+      <ion-col>{{ c.montant }}</ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
