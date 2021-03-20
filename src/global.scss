@@ -41,16 +41,16 @@
   font: 15px Helvetica;
   margin-top: 10%;
 }
-.alert-fees .alert-wrapper .alert-head {
+.alert-fees .alert-wrapper .alert-head, .alert-transfer .alert-wrapper .alert-head{
   background-color: #EDEDED;
   margin-bottom: 10%;
   font: 20px 'Poppins';
 }
-.alert .alert-head, .alert .alert-message {
+.alert .alert-head, .alert .alert-message, .alert-confirm .alert-head {
   background-color: #EDEDED;
   font: 20px 'Poppins';
 }
-.alert-fees .alert-message, .alert .alert-radio-group{
+.alert-fees .alert-message, .alert .alert-radio-group, .alert-transfer .alert-message{
   font: 15px 'Poppins';
 }
 .alert-fees .alert-message strong {
@@ -65,7 +65,42 @@
   height: 80%;
   margin: 0 auto;
 }
-.alert .alert-button-group .alert-button-role-cancel {
+.alert .alert-button-group .alert-button-role-cancel, .alert-confirm .alert-button-group .alert-button-role-cancel {
   font: bold 17px 'Poppins';
   color: gray;
+}
+.alert-transfer .alert-message {
+  text-align: start;
+}
+.alert-transfer .alert-message .message {
+  font-weight: 600;
+}
+.alert-transfer .alert-message .code {
+  font-weight: 600;
+  font-size: 17px;
+}
+.alert-transfer .alert-message ion-row {
+  margin-top: 4%;
+}
+.alert-transfer .alert-message ion-icon {
+  width: 100%;
+  font-size: 32px;
+  color: #FA4A0C;
+}
+.alert-confirm .alert-input {
+  font: bold 15px 'Poppins';
+  border: none;
+}
+.alert-confirm .alert-button-group .btn-confirm {
+  font: bold 17px 'Poppins';
+  color: white;
+  background-color: #FA4A0C;
+  border-radius: 30px;
+  padding: 1%;
+}
+.alert-confirm .alert-button-group .alert-button-role-cancel {
+  border: none;
+}
+.alert-confirm .alert-button-group {
+  padding: 3%;
 }

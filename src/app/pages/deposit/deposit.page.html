@@ -1,0 +1,154 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-row>
+      <ion-col>
+        <ion-buttons>
+          <ion-icon [routerLink]="['/tabs/home']" name="home"></ion-icon>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <ion-img src="../../assets/img/logo.jpeg"></ion-img>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <div class="tabs-toolbar-header">
+      <ion-icon name="arrow-redo"></ion-icon>
+      Deposit
+    </div>
+    <hr>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-segment>
+        <ion-segment-button [disabled]="!disabled" [ngClass]="{'segment-button-checked': checked === 'sender'}" value="sender">
+          <ion-row>
+            <ion-label>Envoyeur</ion-label>
+          </ion-row>
+        </ion-segment-button>
+        <ion-segment-button [disabled]="disabled" [ngClass]="{'segment-button-checked': checked === 'recipient'}" value="recipient">
+          <ion-row>
+            <ion-label>Bénéficiaire </ion-label>
+          </ion-row>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="segment == 'sender'">
+    <form #depositForm="ngForm" (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item class="item1">
+          <ion-label position="floating">N° CNI</ion-label>
+          <ion-input name="depositClientNin" type="text" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p [hidden]="depositForm.valid" class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input name="depositClientLastname" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p [hidden]="depositForm.valid" class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input name="depositClientFirstname" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p [hidden]="depositForm.valid" class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Téléphone</ion-label>
+          <ion-input name="depositClientPhoneNumber" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p [hidden]="depositForm.valid" class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Montant</ion-label>
+          <ion-input name="amount" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p [hidden]="depositForm.valid" class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item class="fees">
+          <ion-label position="floating">Frais</ion-label>
+          <ion-input value="12 000" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item style="clear: both;">
+          <ion-label position="floating">Total</ion-label>
+          <ion-input value="362 000" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+      </ion-list>
+      <ion-button (click)="next()" expand="block">Suivant</ion-button>
+    </form>
+  </div>
+  <div *ngIf="segment == 'recipient'">
+    <form #depositForm1="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Nom</ion-label>
+          <ion-input name="depositClientLastname" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p hidden class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Prénom</ion-label>
+          <ion-input name="depositClientFirstname" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p hidden class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Téléphone</ion-label>
+          <ion-input name="depositClientPhoneNumber" type="text" required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p hidden class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+      </ion-list>
+
+      <ion-button (click)="temp()" type="submit" expand="block">Suivant</ion-button>
+    </form>
+  </div>
+</ion-content>

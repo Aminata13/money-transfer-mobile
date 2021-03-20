@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons>
+      <ion-img class="centered" src="../../assets/img/logo.jpeg"></ion-img>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button mode="ios">
+        <ion-avatar>
+          <img src="../../assets/img/avatar.jpeg" alt="avatar">
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title style="margin-bottom: 2%;">Agence</ion-card-title>
+      <ion-text>
+        Nom: <span class="branch">BTS Multimedias</span>
+      </ion-text>
+      <br>
+      <ion-text>
+        Adresse: <span class="branch">Seoul</span>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>Solde du Compte</ion-card-title>
+      <ion-text class="balance">
+        150 000
+      </ion-text>
+      <ion-text>
+        XOF <br> Mise à jour le 22/02/21 à 13h15
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+  <ion-row>
+    <ion-col>
+      <ion-card [routerLink]="['/tabs/home/deposit']" class="transaction">
+        <ion-icon size="large" name="arrow-redo"></ion-icon><br>
+        <ion-text>Dépôt</ion-text>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card [routerLink]="['/tabs/home/withdrawal']" class="transaction">
+        <ion-icon size="large" name="arrow-undo"></ion-icon><br>
+        <ion-text>Retrait</ion-text>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<router-outlet></router-outlet>

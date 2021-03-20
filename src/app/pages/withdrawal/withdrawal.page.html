@@ -1,0 +1,133 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-row>
+      <ion-col>
+        <ion-buttons>
+          <ion-icon [routerLink]="['/tabs/home']" name="home"></ion-icon>
+        </ion-buttons>
+      </ion-col>
+      <ion-col>
+        <ion-buttons>
+          <ion-img src="../../assets/img/logo.jpeg"></ion-img>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+    <div class="tabs-toolbar-header">
+      <ion-icon name="arrow-undo"></ion-icon>
+      Retrait
+    </div>
+    <hr>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="ion-margin-bottom">
+    <ion-row>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Code</ion-label>
+          <ion-input type="text" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-segment>
+        <ion-segment-button [disabled]="disabled" [ngClass]="{'segment-button-checked': checked === 'recipient'}" value="recipient">
+          <ion-row>
+            <ion-label>Bénéficiaire </ion-label>
+          </ion-row>
+        </ion-segment-button>
+        <ion-segment-button [disabled]="!disabled" [ngClass]="{'segment-button-checked': checked === 'sender'}" value="sender">
+          <ion-row>
+            <ion-label>Envoyeur</ion-label>
+          </ion-row>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-row>
+  </ion-grid>
+  <div *ngIf="segment == 'sender'">
+    <form>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">N° CNI</ion-label>
+          <ion-input value="2 619 87261 78" type="text" spellcheck="false" autocapitalize="off" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nom & Prénom</ion-label>
+          <ion-input value="Diallo Saliou" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Montant envoyé</ion-label>
+          <ion-input value="350 000" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Téléphone</ion-label>
+          <ion-input value="77 008 08 08" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Date d'envoi</ion-label>
+          <ion-input value="2020-02-23" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-button (click)="temp()" type="submit" expand="block">Retirer</ion-button>
+    </form>
+  </div>
+  <div *ngIf="segment == 'recipient'">
+    <form>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">N° CNI</ion-label>
+          <ion-input type="text" spellcheck="false" autocapitalize="off"
+            required>
+          </ion-input>
+        </ion-item>
+        <ion-text class="error" color="danger">
+          <p hidden class="ion-padding-start">
+            Veuillez remplir ce champ.
+          </p>
+        </ion-text>
+
+        <ion-item>
+          <ion-label position="floating">Nom & Prénom</ion-label>
+          <ion-input value="Diallo Mariama" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Montant à recevoir</ion-label>
+          <ion-input value="350 000" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Téléphone</ion-label>
+          <ion-input value="77 008 08 08" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Date d'envoi</ion-label>
+          <ion-input value="2020-02-23" type="text" readonly>
+          </ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-button (click)="next()" type="submit" expand="block">Suivant</ion-button>
+    </form>
+  </div>
+</ion-content>

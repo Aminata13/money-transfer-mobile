@@ -9,7 +9,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'desktop',
+        path: 'home',
         loadChildren: () => import('../desktop/desktop.module').then( m => m.DesktopPageModule)
       },
       {

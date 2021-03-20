@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
 
     if (form.valid) {
       // this.userData.login(this.login.username);
-      this.router.navigateByUrl('/tabs/desktop');
+      this.router.navigateByUrl('/tabs/home');
     }
   }
 
