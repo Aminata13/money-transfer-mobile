@@ -25,12 +25,12 @@
     <ion-list>
       <ion-item class="item1">
         <ion-label position="floating">Montant</ion-label>
-        <ion-input name="amount" type="number" spellcheck="false" autocapitalize="off"
+        <ion-input [(ngModel)]="amount" name="amount" type="number" spellcheck="false" autocapitalize="off"
           required>
         </ion-input>
       </ion-item>
     </ion-list>
 
-    <ion-button size="small" class="ion-float-right" [disabled]="!feesForm.form.valid" type="submit" expand="block">Calculer</ion-button>
+    <ion-button size="small" class="ion-float-right" [disabled]="amount <= 0" type="submit" expand="block">Calculer</ion-button>
   </form>
 </ion-content>

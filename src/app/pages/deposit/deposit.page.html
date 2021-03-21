@@ -37,97 +37,103 @@
     </ion-row>
   </ion-grid>
   <div *ngIf="segment == 'sender'">
-    <form #depositForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #depositForm="ngForm" (ngSubmit)="next()">
       <ion-list>
         <ion-item class="item1">
           <ion-label position="floating">N° CNI</ion-label>
-          <ion-input name="depositClientNin" type="text" spellcheck="false" autocapitalize="off"
+          <ion-input [(ngModel)]="deposit.depositClient.nin" #depositClientNin="ngModel" name="depositClientNin" type="text" minlength="13" maxlength="13"
             required>
           </ion-input>
         </ion-item>
-        <ion-text class="error" color="danger">
-          <p [hidden]="depositForm.valid" class="ion-padding-start">
+        <ion-text *ngIf="depositClientNin.invalid && depositClientNin.dirty" class="error" color="danger">
+          <p *ngIf="depositClientNin.errors.required" class="ion-padding-start">
             Veuillez remplir ce champ.
+          </p>
+          <p *ngIf="depositClientNin.errors.minlength" class="ion-padding-start">
+            Numéro d'identification invalide
           </p>
         </ion-text>
 
         <ion-item>
           <ion-label position="floating">Nom</ion-label>
-          <ion-input name="depositClientLastname" type="text" required>
+          <ion-input [(ngModel)]="deposit.depositClient.lastname" #depositClientLastname="ngModel" name="depositClientLastname" type="text" required>
           </ion-input>
         </ion-item>
         <ion-text class="error" color="danger">
-          <p [hidden]="depositForm.valid" class="ion-padding-start">
+          <p [hidden]="depositClientLastname.valid || depositClientLastname.pristine" class="ion-padding-start">
             Veuillez remplir ce champ.
           </p>
         </ion-text>
 
         <ion-item>
           <ion-label position="floating">Prénom</ion-label>
-          <ion-input name="depositClientFirstname" type="text" required>
+          <ion-input [(ngModel)]="deposit.depositClient.firstname" #depositClientFirstname="ngModel" name="depositClientFirstname" type="text" required>
           </ion-input>
         </ion-item>
         <ion-text class="error" color="danger">
-          <p [hidden]="depositForm.valid" class="ion-padding-start">
+          <p [hidden]="depositClientFirstname.valid || depositClientFirstname.pristine" class="ion-padding-start">
             Veuillez remplir ce champ.
           </p>
         </ion-text>
 
         <ion-item>
           <ion-label position="floating">Téléphone</ion-label>
-          <ion-input name="depositClientPhoneNumber" type="text" required>
+          <ion-input [(ngModel)]="deposit.depositClient.phoneNumber" #depositClientPhoneNumber="ngModel" name="depositClientPhoneNumber" type="text" pattern="^(33|7[05-8])[0-9]{7}$" required>
           </ion-input>
         </ion-item>
-        <ion-text class="error" color="danger">
-          <p [hidden]="depositForm.valid" class="ion-padding-start">
+        <ion-text *ngIf="depositClientPhoneNumber.invalid && depositClientPhoneNumber.dirty" class="error" color="danger">
+          <p *ngIf="depositClientPhoneNumber.errors.required" class="ion-padding-start">
             Veuillez remplir ce champ.
+          </p>
+          <p *ngIf="depositClientPhoneNumber.errors.pattern" class="ion-padding-start">
+            Numéro de téléphone invalide
           </p>
         </ion-text>
 
         <ion-item>
           <ion-label position="floating">Montant</ion-label>
-          <ion-input name="amount" type="text" required>
+          <ion-input (keyup)="calculateFees()" [(ngModel)]="deposit.amount" #amount="ngModel" name="amount" type="number" required>
           </ion-input>
         </ion-item>
         <ion-text class="error" color="danger">
-          <p [hidden]="depositForm.valid" class="ion-padding-start">
+          <p [hidden]="amount.valid || amount.pristine" class="ion-padding-start">
             Veuillez remplir ce champ.
           </p>
         </ion-text>
 
         <ion-item class="fees">
           <ion-label position="floating">Frais</ion-label>
-          <ion-input value="12 000" type="text" readonly>
+          <ion-input [value]="fees" type="text" readonly>
           </ion-input>
         </ion-item>
 
         <ion-item style="clear: both;">
           <ion-label position="floating">Total</ion-label>
-          <ion-input value="362 000" type="text" readonly>
+          <ion-input [value]="total" type="text" readonly>
           </ion-input>
         </ion-item>
 
       </ion-list>
-      <ion-button (click)="next()" expand="block">Suivant</ion-button>
+      <ion-button [disabled]="!depositForm.form.valid" type="submit" expand="block">Suivant</ion-button>
     </form>
   </div>
   <div *ngIf="segment == 'recipient'">
-    <form #depositForm1="ngForm">
+    <form #depositForm1="ngForm" (ngSubmit)="onSubmit()">
       <ion-list>
         <ion-item>
           <ion-label position="floating">Nom</ion-label>
-          <ion-input name="depositClientLastname" type="text" required>
+          <ion-input [(ngModel)]="deposit.withdrawalClient.lastname" #withdrawalClientLastname="ngModel" name="withdrawalClientLastname" type="text" required>
           </ion-input>
         </ion-item>
         <ion-text class="error" color="danger">
-          <p hidden class="ion-padding-start">
+          <p [hidden]="withdrawalClientLastname.valid || withdrawalClientLastname.pristine" class="ion-padding-start">
             Veuillez remplir ce champ.
           </p>
         </ion-text>
 
         <ion-item>
           <ion-label position="floating">Prénom</ion-label>
-          <ion-input name="depositClientFirstname" type="text" required>
+          <ion-input [(ngModel)]="deposit.withdrawalClient.firstname" #withdrawalClientFirstname="ngModel" name="depositClientFirstname" type="text" required>
           </ion-input>
         </ion-item>
         <ion-text class="error" color="danger">
@@ -138,17 +144,20 @@
 
         <ion-item>
           <ion-label position="floating">Téléphone</ion-label>
-          <ion-input name="depositClientPhoneNumber" type="text" required>
+          <ion-input [(ngModel)]="deposit.withdrawalClient.phoneNumber" #withdrawalClientPhoneNumber="ngModel" name="withdrawalClientPhoneNumber" type="text" pattern="^(33|7[05-8])[0-9]{7}$" required>
           </ion-input>
         </ion-item>
-        <ion-text class="error" color="danger">
-          <p hidden class="ion-padding-start">
+        <ion-text *ngIf="withdrawalClientPhoneNumber.invalid && withdrawalClientPhoneNumber.dirty" class="error" color="danger">
+          <p *ngIf="withdrawalClientPhoneNumber.errors.required" class="ion-padding-start">
             Veuillez remplir ce champ.
+          </p>
+          <p *ngIf="withdrawalClientPhoneNumber.errors.pattern" class="ion-padding-start">
+            Numéro de téléphone invalide
           </p>
         </ion-text>
       </ion-list>
 
-      <ion-button (click)="temp()" type="submit" expand="block">Suivant</ion-button>
+      <ion-button [disabled]="!depositForm1.form.valid" type="submit" expand="block">Suivant</ion-button>
     </form>
   </div>
 </ion-content>
