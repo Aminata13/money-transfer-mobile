@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/modules/users/user.model';
 
 @Component({
   selector: 'app-history',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.page.scss'],
 })
 export class HistoryPage implements OnInit {
+  user: User;
+  role: string;
   segment = 'some';
   transactions: any[];
   agents: any[];
@@ -106,10 +109,17 @@ export class HistoryPage implements OnInit {
    }
 
   ngOnInit() {
+    this.getCurrentUser();
   }
 
   segmentChanged(ev: any) {
     console.log(ev.detail.value);
     this.segment = ev.detail.value;
+  }
+
+  getCurrentUser() {
+    const currentUser = localStorage.getItem('currentUser')!;
+    this.user = JSON.parse(currentUser);
+    this.role = this.user.role.name;
   }
 }

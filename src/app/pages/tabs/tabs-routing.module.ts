@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CommissionGuard } from 'src/app/core/guards/commission.guard';
 
 import { TabsPage } from './tabs.page';
 
@@ -18,7 +19,8 @@ const routes: Routes = [
       },
       {
         path: 'commission',
-        loadChildren: () => import('../commission/commission.module').then( m => m.CommissionPageModule)
+        loadChildren: () => import('../commission/commission.module').then( m => m.CommissionPageModule),
+        canActivate: [CommissionGuard]
       },
       {
         path: 'fees',

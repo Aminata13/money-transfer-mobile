@@ -9,7 +9,8 @@
     <ion-buttons slot="end">
       <ion-button mode="ios">
         <ion-avatar>
-          <img src="../../assets/img/avatar.jpeg" alt="avatar">
+          <img src="data:image/JPEG;base64,{{user?.avatar}}"
+          onerror="this.src='../../assets/img/avatar.jpeg';" alt="avatar">
         </ion-avatar>
       </ion-button>
     </ion-buttons>

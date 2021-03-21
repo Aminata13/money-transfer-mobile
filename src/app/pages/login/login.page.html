@@ -7,30 +7,41 @@
 </ion-header>
 
 <ion-content>
-  <form #loginForm="ngForm" novalidate>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-item class="item1">
         <ion-label position="floating">Téléphone</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+        <ion-input formControlName="phoneNumber" type="text" spellcheck="false" autocapitalize="off"
           required>
         </ion-input>
       </ion-item>
 
-      <ion-text class="error" color="danger">
-        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
+      <ion-text *ngIf="phoneNumber?.invalid && phoneNumber?.dirty" class="error" color="danger">
+        <p *ngIf="phoneNumber?.errors?.required" class="ion-padding-start">
           Le numéro de téléphone obligatoire
+        </p>
+        <p *ngIf="phoneNumber?.errors?.pattern" class="ion-padding-start">
+          Numéro de téléphone incorrect
         </p>
       </ion-text>
 
       <ion-item>
         <ion-label position="floating">Mot de Passe</ion-label>
-        <ion-input [(ngModel)]="login.password" name="password" type="password" #password="ngModel" required>
+        <ion-input formControlName="password" name="password" type="password" required>
         </ion-input>
       </ion-item>
 
-      <ion-text class="error" color="danger">
-        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
+      <ion-text *ngIf="password?.invalid && password?.dirty" class="error" color="danger">
+        <p *ngIf="password?.errors?.required" class="ion-padding-start">
           Le mot de passe est obligatoire
+        </p>
+        <p *ngIf="password?.errors?.minlength" class="ion-padding-start">
+          Le mot de passe doit avoir 8 caractères minimum
+        </p>
+      </ion-text>
+      <ion-text *ngIf="phoneNumber?.invalid && password?.invalid && credentialsError" class="error" color="danger">
+        <p class="ion-padding-start">
+          Nom d'utilisateur ou mot de passe incorrect.
         </p>
       </ion-text>
     </ion-list>
@@ -38,6 +49,6 @@
     <ion-text>
       <h5>Mot de passe oublié?</h5>
     </ion-text>
-    <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
+    <ion-button [disabled]="!loginForm.valid" type="submit" expand="block">Login</ion-button>
   </form>
 </ion-content>

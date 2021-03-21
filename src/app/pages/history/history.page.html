@@ -13,22 +13,31 @@
           </ion-buttons>
         </ion-col>
       </ion-row>
-      <ion-row class="ion-margin-top transaction">
-        <ion-segment (ionChange)="segmentChanged($event)">
-          <ion-segment-button value="some">
-            <ion-row>
-              <ion-icon name="time-outline"></ion-icon>
-              <ion-label>Mes Transactions</ion-label>
-            </ion-row>
-          </ion-segment-button>
-          <ion-segment-button value="all">
-            <ion-row>
-              <ion-icon name="time"></ion-icon>
-              <ion-label>Toutes</ion-label>
-            </ion-row>
-          </ion-segment-button>
-        </ion-segment>
-      </ion-row>
+      <ng-container *ngIf="role == 'ADMIN'; else elseTemplate">
+        <ion-row class="ion-margin-top transaction">
+          <ion-segment (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="some">
+              <ion-row>
+                <ion-icon name="time-outline"></ion-icon>
+                <ion-label>Mes Transactions</ion-label>
+              </ion-row>
+            </ion-segment-button>
+            <ion-segment-button value="all">
+              <ion-row>
+                <ion-icon name="time"></ion-icon>
+                <ion-label>Toutes</ion-label>
+              </ion-row>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <div class="tabs-toolbar-header">
+          <ion-icon name="calculator"></ion-icon>
+          Mes transactions
+        </div>
+        <hr>
+      </ng-template>
     </ion-grid>
   </ion-toolbar>
 </ion-header>
@@ -60,17 +69,13 @@
     <ion-grid class="table-grid">
       <ion-row class="table-row">
         <ion-col>Date<ion-icon name="caret-down"></ion-icon></ion-col>
-        <ion-col>Agent</ion-col>
         <ion-col>Type</ion-col>
         <ion-col>Montant<ion-icon name="caret-down"></ion-icon></ion-col>
-        <ion-col>Frais<ion-icon name="caret-down"></ion-icon></ion-col>
       </ion-row>
       <ion-row *ngFor="let t of transactions; index as i" class="table-row">
         <ion-col>{{ t.date }}</ion-col>
-        <ion-col>{{ t.agent }}</ion-col>
         <ion-col>{{ t.type }}</ion-col>
         <ion-col>{{ t.montant }}</ion-col>
-        <ion-col>{{ t.frais }}</ion-col>
       </ion-row>
     </ion-grid>
     <ion-grid>

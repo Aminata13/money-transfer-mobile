@@ -3,17 +3,32 @@
 
     <ion-menu contentId="main-content">
       <ion-content>
-        <ion-list lines="none">
-          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
-            <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
-              <ion-icon size="small" slot="start" [name]="p.icon"></ion-icon>
-              <ion-label style="font: bold 16px Poppins; color: white;">
-                {{p.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list>
-        <ion-list>
+        <ng-container *ngIf="role === 'ADMIN'; else elseTemplate">
+          <ion-list lines="none">
+            <ion-menu-toggle autoHide="false" *ngFor="let p of adminAppPages; let i = index">
+              <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+                <ion-icon size="small" slot="start" [name]="p.icon"></ion-icon>
+                <ion-label style="font: bold 16px Poppins; color: white;">
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <ion-list lines="none">
+            <ion-menu-toggle autoHide="false" *ngFor="let p of agentAppPages; let i = index">
+              <ion-item [routerLink]="p.url" routerLinkActive="selected" routerDirection="root" detail="false">
+                <ion-icon size="small" slot="start" [name]="p.icon"></ion-icon>
+                <ion-label style="font: bold 16px Poppins; color: white;">
+                  {{p.title}}
+                </ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-list>
+        </ng-template>
+
+        <ion-list (click)="logout()">
           <ion-button class="logout" fill="clear" style="font-family: Poppins; color: white; font-weight: bold;">Déconnexion
             <ion-icon size="small" name="log-out-outline" style="margin-left: 2%;"></ion-icon>
           </ion-button>
